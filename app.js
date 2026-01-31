@@ -19,7 +19,7 @@ const AppData = {
     projects: [
         {
             id: 1,
-            title: 'Renovation Cuisine',
+            title: 'Rénovation Cuisine',
             type: 'kitchen',
             status: 'in_progress',
             surface: 18,
@@ -32,7 +32,7 @@ const AppData = {
         },
         {
             id: 2,
-            title: 'Salle de bain complete',
+            title: 'Salle de bain complète',
             type: 'bathroom',
             status: 'pending',
             surface: 8,
@@ -63,7 +63,7 @@ const AppData = {
             id: 1,
             name: 'Jean-Pierre Martin',
             initials: 'JP',
-            specialty: 'Plombier certifie',
+            specialty: 'Plombier certifié',
             type: 'plumber',
             rating: 4.9,
             reviews: 127,
@@ -75,7 +75,7 @@ const AppData = {
             verified: true,
             pro: true,
             fast: true,
-            description: 'Plombier certifie avec 15 ans d\'experience. Specialiste en renovation de salles de bain et installation de systemes de chauffage.',
+            description: 'Plombier certifié avec 15 ans d\'experience. Specialiste en renovation de salles de bain et installation de systemes de chauffage.',
             skills: ['Plomberie generale', 'Chauffage', 'Sanitaires', 'Depannage urgent'],
             availability: 'Disponible sous 48h'
         },
@@ -83,7 +83,7 @@ const AppData = {
             id: 2,
             name: 'Marie Schneider',
             initials: 'MS',
-            specialty: 'Electricienne agreee',
+            specialty: 'Électricienne agréée',
             type: 'electrician',
             rating: 4.8,
             reviews: 98,
@@ -95,7 +95,7 @@ const AppData = {
             verified: true,
             pro: true,
             fast: false,
-            description: 'Electricienne agreee specialisee dans les installations residentielles et la mise aux normes.',
+            description: 'Électricienne agréée specialisee dans les installations residentielles et la mise aux normes.',
             skills: ['Installation electrique', 'Mise aux normes', 'Domotique', 'Depannage'],
             availability: 'Disponible la semaine prochaine'
         },
@@ -103,7 +103,7 @@ const AppData = {
             id: 3,
             name: 'Luc Hoffmann',
             initials: 'LH',
-            specialty: 'Renovation complete',
+            specialty: 'Rénovation complète',
             type: 'renovation',
             rating: 4.9,
             reviews: 215,
@@ -116,7 +116,7 @@ const AppData = {
             pro: true,
             fast: true,
             description: 'Entrepreneur general specialise dans la renovation complete. Coordination de tous corps de metiers.',
-            skills: ['Renovation complete', 'Gestion de projet', 'Coordination', 'Conseil'],
+            skills: ['Rénovation complète', 'Gestion de projet', 'Coordination', 'Conseil'],
             availability: 'Disponible immediatement'
         },
         {
@@ -163,7 +163,7 @@ const AppData = {
             id: 6,
             name: 'Anna Klein',
             initials: 'AK',
-            specialty: 'Peintre decoratrice',
+            specialty: 'Peintre décoratrice',
             type: 'painter',
             rating: 4.8,
             reviews: 156,
@@ -175,7 +175,7 @@ const AppData = {
             verified: true,
             pro: true,
             fast: false,
-            description: 'Peintre decoratrice passionnee par les finitions haut de gamme et les techniques speciales.',
+            description: 'Peintre décoratrice passionnee par les finitions haut de gamme et les techniques speciales.',
             skills: ['Peinture interieure', 'Effets decoratifs', 'Papier peint', 'Enduits'],
             availability: 'Planning a voir'
         }
@@ -213,7 +213,7 @@ const AppData = {
             bathroom: { min: 500, max: 700, label: 'Salle de bain' },
             living: { min: 200, max: 350, label: 'Salon/Sejour' },
             bedroom: { min: 180, max: 300, label: 'Chambre' },
-            full: { min: 300, max: 500, label: 'Renovation complete' }
+            full: { min: 300, max: 500, label: 'Rénovation complète' }
         },
         materialMultipliers: {
             eco: { value: 0.75, label: 'Economique' },
@@ -587,7 +587,7 @@ function renderEstimator() {
                                 <div class="selection-card" data-value="kitchen" onclick="selectType(this)">
                                     <i class="fas fa-utensils" aria-hidden="true"></i>
                                     <div class="title">Cuisine</div>
-                                    <div class="subtitle">Renovation complete</div>
+                                    <div class="subtitle">Rénovation complète</div>
                                 </div>
                                 <div class="selection-card" data-value="bathroom" onclick="selectType(this)">
                                     <i class="fas fa-bath" aria-hidden="true"></i>
@@ -693,7 +693,7 @@ function renderEstimator() {
                                     <div class="alert-message">Votre estimation a ete calculee avec un indice de confiance de 94%.</div>
                                 </div>
                             </div>
-                            <h3 class="mb-2">Prochaines etapes</h3>
+                            <h3 class="mb-2">Prochaines étapes</h3>
                             <p class="text-muted mb-3">Vous pouvez maintenant creer un projet ou trouver un artisan pour realiser vos travaux.</p>
                             <div class="flex gap-2">
                                 <button class="btn btn-primary" onclick="createProjectFromEstimate()">
@@ -727,14 +727,14 @@ function renderEstimator() {
                         <div class="estimate-hero">
                             <div class="estimate-hero-label">Prix estime</div>
                             <div id="estimate-price" class="estimate-hero-price">-- EUR</div>
-                            <div id="estimate-range" class="estimate-hero-range">Selectionnez un type de projet</div>
+                            <div id="estimate-range" class="estimate-hero-range">Sélectionnez un type de projet</div>
                         </div>
 
                         <h4 class="mb-2 section-heading-sm">Repartition des couts</h4>
                         <div id="cost-breakdown">
                             <div class="empty-placeholder text-muted">
                                 <i class="fas fa-calculator empty-placeholder-icon" aria-hidden="true"></i>
-                                Completez les etapes pour voir la repartition
+                                Complétez les étapes pour voir la répartition
                             </div>
                         </div>
 
@@ -805,7 +805,7 @@ function updateEstimate() {
 
     if (!estimatorData.type) {
         document.getElementById('estimate-price').textContent = '-- EUR';
-        document.getElementById('estimate-range').textContent = 'Selectionnez un type de projet';
+        document.getElementById('estimate-range').textContent = 'Sélectionnez un type de projet';
         return;
     }
 
@@ -1508,7 +1508,7 @@ function renderMessages() {
                     <div class="card-body flex-center flex-1">
                         <div class="text-center text-muted">
                             <i class="fas fa-comments chat-empty-icon" aria-hidden="true"></i>
-                            <p>Selectionnez une conversation</p>
+                            <p>Sélectionnez une conversation</p>
                         </div>
                     </div>
                 `}
@@ -1730,9 +1730,9 @@ function openContactModal(craftsmanId) {
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="form-label">Projet concern <span class="required">*</span></label>
+                        <label class="form-label">Projet concerné <span class="required">*</span></label>
                         <select class="form-control">
-                            <option value="">Selectionnez un projet</option>
+                            <option value="">Sélectionnez un projet</option>
                             ${AppData.projects.filter(p => p.status !== 'completed').map(p => `
                                 <option value="${p.id}">${p.title}</option>
                             `).join('')}
