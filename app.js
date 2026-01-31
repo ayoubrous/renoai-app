@@ -371,7 +371,7 @@ function renderPage() {
             initMessages();
             break;
         case 'settings':
-            pageTitle.textContent = 'Parametres';
+            pageTitle.textContent = 'Paramètres';
             content.innerHTML = renderSettings();
             break;
         default:
@@ -458,7 +458,7 @@ function renderDashboard() {
                     <div class="flex-between flex-wrap" style="gap: var(--spacing-6);">
                         <div>
                             <h3><i class="fas fa-brain" aria-hidden="true"></i> Devis Intelligent par IA</h3>
-                            <p>Uploadez vos photos, decrivez votre probleme et notre IA genere automatiquement un devis detaille avec sous-etapes et suivi.</p>
+                            <p>Uploadez vos photos, décrivez votre problème et notre IA génère automatiquement un devis détaillé avec sous-étapes et suivi.</p>
                         </div>
                         <button class="btn btn-lg btn-cta-inverse" onclick="navigateTo('devis')">
                             <i class="fas fa-magic" aria-hidden="true"></i> Creer un devis
@@ -1634,7 +1634,7 @@ function renderSettings() {
                 <div class="card-body">
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">Prenom</label>
+                            <label class="form-label">Prénom</label>
                             <input type="text" class="form-control" value="${user.firstName}">
                         </div>
                         <div class="form-group">
@@ -1648,7 +1648,7 @@ function renderSettings() {
                             <input type="email" class="form-control" value="${user.email}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Telephone</label>
+                            <label class="form-label">Téléphone</label>
                             <input type="tel" class="form-control" value="${user.phone}">
                         </div>
                     </div>
@@ -1673,7 +1673,7 @@ function renderSettings() {
                         <input type="checkbox" id="notif-email" checked>
                         <label class="form-check-label" for="notif-email">
                             <strong>Notifications par email</strong>
-                            <div class="text-muted text-sm">Recevez des mises a jour sur vos projets par email</div>
+                            <div class="text-muted text-sm">Recevez des mises à jour sur vos projets par email</div>
                         </label>
                     </div>
                     <div class="form-check mb-3">
@@ -1687,7 +1687,7 @@ function renderSettings() {
                         <input type="checkbox" id="notif-marketing" checked>
                         <label class="form-check-label" for="notif-marketing">
                             <strong>Communications marketing</strong>
-                            <div class="text-muted text-sm">Recevez nos offres et actualites</div>
+                            <div class="text-muted text-sm">Recevez nos offres et actualités</div>
                         </label>
                     </div>
                 </div>
@@ -1695,7 +1695,7 @@ function renderSettings() {
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <h3 class="card-title">Securite</h3>
+                    <h3 class="card-title">Sécurité</h3>
                 </div>
                 <div class="card-body">
                     <button class="btn btn-secondary mb-3">
@@ -1704,8 +1704,8 @@ function renderSettings() {
                     <div class="alert alert-info">
                         <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         <div class="alert-content">
-                            <div class="alert-title">Authentification a deux facteurs</div>
-                            <div class="alert-message">Renforcez la securite de votre compte en activant la 2FA.</div>
+                            <div class="alert-title">Authentification à deux facteurs</div>
+                            <div class="alert-message">Renforcez la sécurité de votre compte en activant la 2FA.</div>
                         </div>
                     </div>
                 </div>

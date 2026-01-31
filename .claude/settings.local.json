@@ -35,7 +35,18 @@
       "Bash(git --version:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(powershell -Command \"Stop-Process -Id 11668 -Force\")",
+      "Bash(git commit:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(winget install:*)",
+      "Bash(choco install:*)",
+      "Bash(/tmp/gh_cli/bin/gh.exe auth status:*)",
+      "Bash(/tmp/gh_cli/bin/gh.exe auth login:*)",
+      "Bash(/tmp/gh_cli/bin/gh.exe repo create:*)",
+      "Bash(git push:*)"
     ]
   }
 }
