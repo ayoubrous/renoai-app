@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RenoAI - Devis de Rénovation Intelligent</title>
+    <meta name="description" content="Plateforme IA pour générer des devis de rénovation détaillés au Luxembourg">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Design System CSS (order: variables → main styles → accessibility → skeleton → dark) -->
+    <link rel="stylesheet" href="css/base/variables.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/base/accessibility.css">
+    <link rel="stylesheet" href="css/components/skeleton.css">
+    <link rel="stylesheet" href="css/themes/dark.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+    <!-- Skip Links pour accessibilité -->
+    <nav class="skip-links" aria-label="Liens d'accès rapide">
+        <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+        <a href="#sidebar" class="skip-link">Aller à la navigation</a>
+        <a href="#global-search" class="skip-link">Aller à la recherche</a>
+    </nav>
+
+    <!-- Zone d'annonces pour lecteurs d'écran -->
+    <div id="sr-announcer" class="sr-announcer" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen" role="progressbar" aria-label="Chargement de l'application">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-home"></i>
+                <span>RenoAI</span>
+            </div>
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Chargement de l'application...</p>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar" role="complementary" aria-label="Navigation principale">
+            <div class="sidebar-header">
+                <a href="#" class="logo" onclick="navigateTo('dashboard'); return false;" aria-label="RenoAI - Retour au tableau de bord">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    RenoAI
+                </a>
+                <!-- Toggle Dark Mode -->
+                <button class="theme-toggle" onclick="window.RenoStore?.ui.toggleTheme()" aria-label="Changer de thème" title="Mode clair/sombre">
+                    <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+                    <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav" role="navigation" aria-label="Menu principal">
+                <div class="nav-section">
+                    <div class="nav-section-title" id="nav-principal">Principal</div>
+                    <a class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')" role="menuitem" aria-current="page">
+                        <i class="fas fa-th-large" aria-hidden="true"></i>
+                        Tableau de bord
+                    </a>
+                    <a class="nav-item" data-page="devis" onclick="navigateTo('devis')" role="menuitem">
+                        <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
+                        Devis IA
+                        <span class="badge" style="background: var(--color-success);" aria-label="Nouveau">Nouveau</span>
+                    </a>
+                    <a class="nav-item" data-page="estimator" onclick="navigateTo('estimator')" role="menuitem">
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                        Estimateur rapide
+                    </a>
+                    <a class="nav-item" data-page="projects" onclick="navigateTo('projects')" role="menuitem">
+                        <i class="fas fa-folder" aria-hidden="true"></i>
+                        Mes Projets
+                        <span class="badge" id="projects-badge" aria-label="3 projets">3</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title" id="nav-services">Services</div>
+                    <a class="nav-item" data-page="marketplace" onclick="navigateTo('marketplace')" role="menuitem">
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                        Artisans
+                    </a>
+                    <a class="nav-item" data-page="messages" onclick="navigateTo('messages')" role="menuitem">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        Messages
+                        <span class="badge" id="messages-badge" aria-label="2 messages non lus">2</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title" id="nav-compte">Compte</div>
+                    <a class="nav-item" data-page="settings" onclick="navigateTo('settings')" role="menuitem">
+                        <i class="fas fa-cog" aria-hidden="true"></i>
+                        Paramètres
+                    </a>
+                    <a class="nav-item" onclick="showHelpModal()" role="menuitem">
+                        <i class="fas fa-question-circle" aria-hidden="true"></i>
+                        Aide
+                    </a>
+                    <a class="nav-item" id="logout-btn" onclick="logout()" style="display: none;" role="menuitem">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                        Déconnexion
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-card" onclick="navigateTo('settings')">
+                    <div class="user-avatar" id="user-avatar">TM</div>
+                    <div class="user-info">
+                        <div class="user-name" id="user-name">Thomas Muller</div>
+                        <div class="user-email" id="user-email">thomas.muller@email.lu</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content" role="main">
+            <!-- Header -->
+            <header class="header" role="banner">
+                <div class="header-left">
+                    <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Ouvrir/Fermer le menu" aria-expanded="true" aria-controls="sidebar">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <h1 class="page-title" id="page-title" tabindex="-1">Tableau de bord</h1>
+                </div>
+
+                <div class="header-right">
+                    <button class="icon-btn mobile-search-toggle" onclick="toggleMobileSearch()" aria-label="Rechercher" title="Rechercher">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                    <div class="header-search" id="header-search" role="search">
+                        <label for="global-search" class="sr-only">Rechercher dans l'application</label>
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input type="search" placeholder="Rechercher..." id="global-search" autocomplete="off" aria-label="Rechercher des projets, devis ou artisans">
+                    </div>
+                    <div class="header-actions" role="toolbar" aria-label="Actions rapides">
+                        <button class="icon-btn" onclick="navigateTo('messages')" aria-label="Notifications" title="Notifications">
+                            <i class="fas fa-bell" aria-hidden="true"></i>
+                            <span class="notification-dot" id="notification-dot" aria-hidden="true"></span>
+                            <span class="sr-only" id="notification-count">0 nouvelles notifications</span>
+                        </button>
+                        <button class="icon-btn" onclick="navigateTo('messages')" aria-label="Messages" title="Messages">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span class="notification-dot" id="messages-dot" aria-hidden="true"></span>
+                            <span class="sr-only" id="messages-count">0 nouveaux messages</span>
+                        </button>
+                        <button class="icon-btn" onclick="window.refreshData?.()" aria-label="Actualiser les données" title="Actualiser">
+                            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content" id="page-content" role="region" aria-label="Contenu de la page" aria-live="polite">
+                <!-- Content will be rendered by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts principaux (données locales + UI) -->
+    <script src="app.js"></script>
+    <script src="devis.js"></script>
+
+    <!-- Scripts d'intégration API (ES Modules) -->
+    <script type="module">
+        // Charger l'intégration API
+        import('./client/js/app-integration.js')
+            .then(module => {
+                console.log('[RenoAI] Intégration API chargée');
+
+                // Masquer le loading screen
+                setTimeout(() => {
+                    const loadingScreen = document.getElementById('loading-screen');
+                    if (loadingScreen) {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                        }, 300);
+                    }
+                }, 500);
+            })
+            .catch(err => {
+                console.warn('[RenoAI] Intégration API non disponible, mode local:', err);
+                // Masquer le loading screen même en cas d'erreur
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.display = 'none';
+                }
+            });
+    </script>
+
+    <!-- Script pour l'aide -->
+    <script>
+        function showHelpModal() {
+            if (window.RenoModal) {
+                window.RenoModal.open({
+                    title: 'Centre d\'aide RenoAI',
+                    size: 'medium',
+                    content: `
+                        <div class="help-content">
+                            <h4>Bienvenue sur RenoAI</h4>
+                            <p>RenoAI est votre assistant intelligent pour tous vos projets de rénovation au Luxembourg.</p>
+
+                            <h4>Fonctionnalités principales</h4>
+                            <ul>
+                                <li><strong>Devis IA</strong> - Générez des devis détaillés en uploadant simplement des photos</li>
+                                <li><strong>Estimateur rapide</strong> - Obtenez une estimation de coût en quelques clics</li>
+                                <li><strong>Marketplace artisans</strong> - Trouvez les meilleurs professionnels certifiés</li>
+                                <li><strong>Suivi de projets</strong> - Gérez tous vos projets en un seul endroit</li>
+                            </ul>
+
+                            <h4>Besoin d'aide ?</h4>
+                            <p>Contactez notre support : <a href="mailto:support@renoai.lu">support@renoai.lu</a></p>
+                        </div>
+                    `,
+                    buttons: [
+                        { label: 'Fermer', primary: true }
+                    ]
+                });
+            } else {
+                alert('Centre d\'aide RenoAI\n\nPour toute question, contactez support@renoai.lu');
+            }
+        }
+    </script>
+
+</body>
+</html>

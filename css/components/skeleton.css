@@ -1,0 +1,650 @@
+/**
+ * RenoAI - Skeleton Loaders
+ * États de chargement avec animation
+ */
+
+/* ============================================
+   BASE SKELETON
+   ============================================ */
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--color-surface-elevated) 25%,
+        var(--color-surface-hover) 50%,
+        var(--color-surface-elevated) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Désactiver l'animation si préférence utilisateur */
+@media (prefers-reduced-motion: reduce) {
+    .skeleton {
+        animation: none;
+        background: var(--color-surface-elevated);
+    }
+}
+
+/* ============================================
+   SKELETON SHAPES
+   ============================================ */
+
+/* Texte */
+.skeleton-text {
+    height: 1em;
+    width: 100%;
+    margin-bottom: var(--spacing-2);
+}
+
+.skeleton-text:last-child {
+    width: 75%;
+}
+
+.skeleton-text-sm {
+    height: 0.875em;
+}
+
+.skeleton-text-lg {
+    height: 1.25em;
+}
+
+/* Titres */
+.skeleton-title {
+    height: 1.5em;
+    width: 60%;
+    margin-bottom: var(--spacing-3);
+}
+
+.skeleton-title-lg {
+    height: 2em;
+    width: 50%;
+}
+
+/* Avatar / Image */
+.skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.skeleton-avatar-sm {
+    width: 32px;
+    height: 32px;
+}
+
+.skeleton-avatar-lg {
+    width: 64px;
+    height: 64px;
+}
+
+.skeleton-avatar-xl {
+    width: 96px;
+    height: 96px;
+}
+
+/* Images */
+.skeleton-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-image-square {
+    aspect-ratio: 1;
+}
+
+.skeleton-thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+/* Boutons */
+.skeleton-button {
+    height: 40px;
+    width: 120px;
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-button-sm {
+    height: 32px;
+    width: 80px;
+}
+
+.skeleton-button-lg {
+    height: 48px;
+    width: 160px;
+}
+
+.skeleton-button-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Badges */
+.skeleton-badge {
+    height: 24px;
+    width: 60px;
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   SKELETON LAYOUTS
+   ============================================ */
+
+/* Card Skeleton */
+.skeleton-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+
+.skeleton-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.skeleton-card-header .skeleton-avatar {
+    flex-shrink: 0;
+}
+
+.skeleton-card-header-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+}
+
+.skeleton-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.skeleton-card-footer {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-2);
+}
+
+/* List Item Skeleton */
+.skeleton-list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.skeleton-list-item:last-child {
+    border-bottom: none;
+}
+
+.skeleton-list-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+}
+
+/* Table Skeleton */
+.skeleton-table {
+    width: 100%;
+}
+
+.skeleton-table-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-4);
+    background-color: var(--color-surface-elevated);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.skeleton-table-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.skeleton-table-cell {
+    height: 1em;
+}
+
+/* Stats Card Skeleton */
+.skeleton-stat-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-4);
+}
+
+.skeleton-stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-3);
+}
+
+.skeleton-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-stat-value {
+    height: 2rem;
+    width: 60%;
+    margin-bottom: var(--spacing-2);
+}
+
+.skeleton-stat-label {
+    height: 0.875rem;
+    width: 40%;
+}
+
+/* Project Card Skeleton */
+.skeleton-project-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.skeleton-project-image {
+    width: 100%;
+    height: 160px;
+}
+
+.skeleton-project-content {
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+
+.skeleton-project-meta {
+    display: flex;
+    gap: var(--spacing-2);
+}
+
+/* Message Skeleton */
+.skeleton-message {
+    display: flex;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3);
+}
+
+.skeleton-message-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.skeleton-message-bubble {
+    padding: var(--spacing-3);
+    background-color: var(--color-surface-elevated);
+    border-radius: var(--radius-lg);
+}
+
+/* Form Skeleton */
+.skeleton-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
+}
+
+.skeleton-label {
+    height: 0.875em;
+    width: 30%;
+}
+
+.skeleton-input {
+    height: 44px;
+    width: 100%;
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-textarea {
+    height: 120px;
+    width: 100%;
+    border-radius: var(--radius-lg);
+}
+
+/* ============================================
+   SKELETON GRIDS
+   ============================================ */
+
+.skeleton-grid {
+    display: grid;
+    gap: var(--spacing-4);
+}
+
+.skeleton-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.skeleton-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.skeleton-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 768px) {
+    .skeleton-grid-2,
+    .skeleton-grid-3,
+    .skeleton-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   PULSE ANIMATION ALTERNATIVE
+   ============================================ */
+
+.skeleton-pulse {
+    animation: skeleton-pulse 2s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ============================================
+   COMPOSANTS SPÉCIFIQUES RENOAI
+   ============================================ */
+
+/* Dashboard Stats Skeleton */
+.skeleton-dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-4);
+}
+
+@media (max-width: 1024px) {
+    .skeleton-dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .skeleton-dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Devis Card Skeleton */
+.skeleton-devis-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-4);
+}
+
+.skeleton-devis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-4);
+}
+
+.skeleton-devis-number {
+    height: 1.25em;
+    width: 120px;
+}
+
+.skeleton-devis-amount {
+    height: 1.5em;
+    width: 100px;
+}
+
+.skeleton-devis-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
+
+.skeleton-devis-actions {
+    display: flex;
+    gap: var(--spacing-2);
+    justify-content: flex-end;
+}
+
+/* Artisan Card Skeleton */
+.skeleton-artisan-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-4);
+    display: flex;
+    gap: var(--spacing-4);
+}
+
+.skeleton-artisan-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+}
+
+.skeleton-artisan-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.skeleton-artisan-specialties {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-2);
+}
+
+.skeleton-artisan-rating {
+    display: flex;
+    gap: var(--spacing-1);
+    align-items: center;
+}
+
+.skeleton-star {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+/* Notification Skeleton */
+.skeleton-notification {
+    display: flex;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+}
+
+.skeleton-notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.skeleton-notification-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spinner-rotate 0.8s linear infinite;
+}
+
+.spinner-sm {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+}
+
+.spinner-lg {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+}
+
+.spinner-xl {
+    width: 64px;
+    height: 64px;
+    border-width: 5px;
+}
+
+@keyframes spinner-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Spinner avec texte */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-8);
+}
+
+.spinner-text {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+/* ============================================
+   LOADING OVERLAY
+   ============================================ */
+
+.loading-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-surface-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    border-radius: inherit;
+}
+
+.loading-overlay-light {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .loading-overlay-light {
+    background-color: rgba(15, 23, 42, 0.8);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-8);
+    text-align: center;
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    color: var(--color-text-disabled);
+    margin-bottom: var(--spacing-4);
+}
+
+.empty-state-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-2);
+}
+
+.empty-state-description {
+    color: var(--color-text-muted);
+    max-width: 400px;
+    margin-bottom: var(--spacing-4);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+/* Cacher le contenu pendant le chargement */
+.loading-hidden {
+    visibility: hidden;
+    position: relative;
+}
+
+.loading-hidden::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    visibility: visible;
+}
+
+/* Inline skeleton */
+.skeleton-inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Skeleton avec largeur variable */
+.skeleton-w-25 { width: 25%; }
+.skeleton-w-50 { width: 50%; }
+.skeleton-w-75 { width: 75%; }
+.skeleton-w-100 { width: 100%; }
+
+/* Hauteurs prédéfinies */
+.skeleton-h-4 { height: 1rem; }
+.skeleton-h-6 { height: 1.5rem; }
+.skeleton-h-8 { height: 2rem; }
+.skeleton-h-12 { height: 3rem; }
+.skeleton-h-16 { height: 4rem; }

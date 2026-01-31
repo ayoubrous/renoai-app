@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(npx http-server:*)",
+      "Bash(timeout:*)",
+      "Bash(ping:*)",
+      "Bash(python -m http.server:*)",
+      "Bash(curl:*)",
+      "Bash(npm install:*)",
+      "Bash(node --experimental-vm-modules node_modules/jest/bin/jest.js:*)",
+      "Bash(npm run dev:*)",
+      "Bash(dir:*)",
+      "Bash(npm run dev:full:*)",
+      "Bash(wc:*)",
+      "Bash(npm test:*)",
+      "Bash(npx jest:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(node:*)",
+      "Bash(find:*)",
+      "Bash(JWT_SECRET=renoai-dev-secret-2024 node -e \"\nprocess.env.JWT_SECRET = ''renoai-dev-secret-2024'';\nimport\\(''./server/index.js''\\).catch\\(e => console.error\\(''ERROR:'', e.message\\)\\);\n\")",
+      "Bash(powershell -Command \"Select-String -Path ''C:\\\\Users\\\\ac38000\\\\Downloads\\\\code_perso\\\\renoai-app\\\\app.js'' -Pattern ''<i class=\"\"fas'' -AllMatches | ForEach-Object { $_LineNumber.ToString\\(\\) + '': '' + $_Line.Trim\\(\\) }\")",
+      "Bash(powershell -File - <<'PS1'\nSelect-String -Path 'C:\\\\Users\\\\ac38000\\\\Downloads\\\\code_perso\\\\renoai-app\\\\app.js' -Pattern '<i class=\"fas' -AllMatches | ForEach-Object { \"$\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" }\nPS1)",
+      "Bash(powershell -File - <<'PS1'\n$f = 'C:\\\\Users\\\\ac38000\\\\Downloads\\\\code_perso\\\\renoai-app\\\\app.js'\n$c = [IO.File]::ReadAllText\\($f\\)\n# Match <i class=\"fas ...\" that is NOT already followed by aria-hidden before the >\n# Replace: <i class=\"fas xxx\"> \\(without aria-hidden\\) -> <i class=\"fas xxx\" aria-hidden=\"true\">\n$c = [regex]::Replace\\($c, '\\(<i class=\"fas [^\"]*\"\\)\\(?!\\\\s*aria-hidden\\)>', '$1 aria-hidden=\"true\">'\\)\n[IO.File]::WriteAllText\\($f, $c\\)\nWrite-Host \"Done\"\nPS1)",
+      "Bash(powershell -File - <<'PS1'\n# Check if any fas icons still lack aria-hidden\n$matches = Select-String -Path 'C:\\\\Users\\\\ac38000\\\\Downloads\\\\code_perso\\\\renoai-app\\\\app.js' -Pattern '<i class=\"fas [^\"]*\">' -AllMatches\nWrite-Host \"Remaining without aria-hidden: $\\($matches.Count\\)\"\n$matches | ForEach-Object { \"$\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" }\nPS1)",
+      "Bash(powershell -Command \"$f=''C:\\\\Users\\\\ac38000\\\\Downloads\\\\code_perso\\\\renoai-app\\\\devis.js''; $c=[IO.File]::ReadAllText\\($f\\); $c=[regex]::Replace\\($c,''\\(<i class=\"\"fas [^\"\"]*\"\"\\)\\(?!\\\\s*aria-hidden\\)>'',''$1 aria-hidden=\"\"true\"\">''\\); [IO.File]::WriteAllText\\($f,$c\\)\")",
+      "Bash(cmd //c \"powershell -NoProfile -Command \"\"$f=''C:\\\\Users\\\\ac38000\\\\Downloads\\\\code_perso\\\\renoai-app\\\\devis.js''; $c=[IO.File]::ReadAllText\\($f\\); $c=[regex]::Replace\\($c,''\\(<i class=\"\"\"\"fas [^\"\"\"\"]*\"\"\"\"\\)\\(?!\\\\s*aria-hidden\\)>'',''$1 aria-hidden=\"\"\"\"true\"\"\"\">''\\); [IO.File]::WriteAllText\\($f,$c\\)\"\"\")",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File 'C:\\\\Users\\\\ac38000\\\\Downloads\\\\code_perso\\\\renoai-app\\\\fix_aria.ps1')",
+      "Bash(taskkill:*)",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyNmMwNGQwYy01ZWRkLTRhYTgtYjQwMy1jMmEwMzM0NDBhNzIiLCJlbWFpbCI6InRob21hcy5tdWxsZXJAZW1haWwubHUiLCJyb2xlIjoidXNlciIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE3Njk4NTY2MzYsImV4cCI6MTc2OTk0MzAzNn0.GiUKtE8ntGbuAqnINqRUcIS6PJwqxdEUDn7s3G9FcO0\")",
+      "Bash(kill:*)",
+      "Bash(NODE_OPTIONS=\"--experimental-vm-modules\" npx jest:*)",
+      "Bash(gh auth:*)",
+      "Bash(git --version:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git status:*)"
+    ]
+  }
+}
