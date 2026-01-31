@@ -143,7 +143,7 @@ const AppData = {
             id: 5,
             name: 'Paul Kremer',
             initials: 'PK',
-            specialty: 'Carreleur-Mosaiste',
+            specialty: 'Carreleur-Mosaïste',
             type: 'renovation',
             rating: 4.7,
             reviews: 89,
@@ -189,7 +189,7 @@ const AppData = {
             messages: [
                 { sender: 'craftsman', text: 'Bonjour ! J\'ai bien recu votre demande pour la renovation de cuisine. Quand pourrions-nous convenir d\'une visite ?', time: '2025-01-16 09:30' },
                 { sender: 'user', text: 'Bonjour Marie, je suis disponible ce samedi matin si cela vous convient.', time: '2025-01-16 10:15' },
-                { sender: 'craftsman', text: 'Parfait, samedi 10h ca vous va ? Je prendrai les mesures et on discutera du projet en detail.', time: '2025-01-16 10:45' },
+                { sender: 'craftsman', text: 'Parfait, samedi 10h ca vous va ? Je prendrai les mesures et on discutera du projet en détail.', time: '2025-01-16 10:45' },
                 { sender: 'user', text: 'C\'est note, a samedi !', time: '2025-01-16 11:00' }
             ]
         },
@@ -281,7 +281,7 @@ function getStatusLabel(status) {
     const labels = {
         pending: { text: 'En attente', class: 'tag-warning' },
         in_progress: { text: 'En cours', class: 'tag-primary' },
-        completed: { text: 'Termine', class: 'tag-success' },
+        completed: { text: 'Terminé', class: 'tag-success' },
         cancelled: { text: 'Annule', class: 'tag-danger' }
     };
     return labels[status] || { text: status, class: 'tag-gray' };
@@ -433,14 +433,14 @@ function renderDashboard() {
                         <div class="stat-icon green"><i class="fas fa-euro-sign" aria-hidden="true"></i></div>
                     </div>
                     <div class="stat-value">${formatCurrency(totalEstimated)}</div>
-                    <div class="stat-label">Budget total estime</div>
+                    <div class="stat-label">Budget total estimé</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-header">
                         <div class="stat-icon purple"><i class="fas fa-check-circle" aria-hidden="true"></i></div>
                     </div>
                     <div class="stat-value">${completedProjects}</div>
-                    <div class="stat-label">Projets termines</div>
+                    <div class="stat-label">Projets terminés</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-header">
@@ -461,7 +461,7 @@ function renderDashboard() {
                             <p>Uploadez vos photos, décrivez votre problème et notre IA génère automatiquement un devis détaillé avec sous-étapes et suivi.</p>
                         </div>
                         <button class="btn btn-lg btn-cta-inverse" onclick="navigateTo('devis')">
-                            <i class="fas fa-magic" aria-hidden="true"></i> Creer un devis
+                            <i class="fas fa-magic" aria-hidden="true"></i> Créer un devis
                         </button>
                     </div>
                 </div>
@@ -525,7 +525,7 @@ function renderDashboard() {
                 <!-- Recent Craftsmen -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Artisans recommandes</h3>
+                        <h3 class="card-title">Artisans recommandés</h3>
                         <a href="#" onclick="navigateTo('marketplace'); return false;" class="btn btn-ghost btn-sm">Voir tout</a>
                     </div>
                     <div class="card-body p-0">
@@ -572,7 +572,7 @@ function renderEstimator() {
                 </div>
                 <div class="step" data-step="4">
                     <div class="step-indicator">4</div>
-                    <div class="step-label">Resultat</div>
+                    <div class="step-label">Résultat</div>
                 </div>
             </div>
 
@@ -597,7 +597,7 @@ function renderEstimator() {
                                 <div class="selection-card" data-value="living" onclick="selectType(this)">
                                     <i class="fas fa-couch" aria-hidden="true"></i>
                                     <div class="title">Salon</div>
-                                    <div class="subtitle">Piece de vie</div>
+                                    <div class="subtitle">Pièce de vie</div>
                                 </div>
                                 <div class="selection-card" data-value="bedroom" onclick="selectType(this)">
                                     <i class="fas fa-bed" aria-hidden="true"></i>
@@ -697,7 +697,7 @@ function renderEstimator() {
                             <p class="text-muted mb-3">Vous pouvez maintenant creer un projet ou trouver un artisan pour realiser vos travaux.</p>
                             <div class="flex gap-2">
                                 <button class="btn btn-primary" onclick="createProjectFromEstimate()">
-                                    <i class="fas fa-folder-plus" aria-hidden="true"></i> Creer le projet
+                                    <i class="fas fa-folder-plus" aria-hidden="true"></i> Créer le projet
                                 </button>
                                 <button class="btn btn-secondary" onclick="navigateTo('marketplace')">
                                     <i class="fas fa-search" aria-hidden="true"></i> Trouver un artisan
@@ -725,12 +725,12 @@ function renderEstimator() {
                     </div>
                     <div class="card-body">
                         <div class="estimate-hero">
-                            <div class="estimate-hero-label">Prix estime</div>
+                            <div class="estimate-hero-label">Prix estimé</div>
                             <div id="estimate-price" class="estimate-hero-price">-- EUR</div>
                             <div id="estimate-range" class="estimate-hero-range">Sélectionnez un type de projet</div>
                         </div>
 
-                        <h4 class="mb-2 section-heading-sm">Repartition des couts</h4>
+                        <h4 class="mb-2 section-heading-sm">Répartition des coûts</h4>
                         <div id="cost-breakdown">
                             <div class="empty-placeholder text-muted">
                                 <i class="fas fa-calculator empty-placeholder-icon" aria-hidden="true"></i>
@@ -952,7 +952,7 @@ function renderProjects() {
                     <div class="tab active" onclick="filterProjects('all', this)">Tous</div>
                     <div class="tab" onclick="filterProjects('in_progress', this)">En cours</div>
                     <div class="tab" onclick="filterProjects('pending', this)">En attente</div>
-                    <div class="tab" onclick="filterProjects('completed', this)">Termines</div>
+                    <div class="tab" onclick="filterProjects('completed', this)">Terminés</div>
                 </div>
                 <button class="btn btn-primary" onclick="navigateTo('estimator')">
                     <i class="fas fa-plus" aria-hidden="true"></i> Nouveau projet
@@ -991,7 +991,7 @@ function renderProjects() {
                                         <td><span class="tag ${status.class}">${status.text}</span></td>
                                         <td>${project.surface} m²</td>
                                         <td>${formatCurrency(project.estimatedCost)}</td>
-                                        <td>${craftsman ? craftsman.name : '<span class="text-muted">Non assigne</span>'}</td>
+                                        <td>${craftsman ? craftsman.name : '<span class="text-muted">Non assigné</span>'}</td>
                                         <td style="width: 150px;">
                                             <div class="flex gap-1 items-center">
                                                 <div class="progress-bar flex-1">
@@ -1027,7 +1027,7 @@ function filterProjects(status, tab) {
             const statusMap = {
                 'in_progress': 'En cours',
                 'pending': 'En attente',
-                'completed': 'Termine'
+                'completed': 'Terminé'
             };
             row.style.display = projectStatus === statusMap[status] ? '' : 'none';
         }
@@ -1071,7 +1071,7 @@ function renderProjectDetail(projectId) {
                                     <div class="font-semibold">${project.surface} m²</div>
                                 </div>
                                 <div>
-                                    <div class="text-muted text-xs">Budget estime</div>
+                                    <div class="text-muted text-xs">Budget estimé</div>
                                     <div class="font-semibold">${formatCurrency(project.estimatedCost)}</div>
                                 </div>
                                 <div>
@@ -1148,7 +1148,7 @@ function renderProjectDetail(projectId) {
                                 <div class="timeline-item">
                                     <div class="timeline-dot timeline-dot-success"></div>
                                     <div>
-                                        <div class="font-semibold">Projet cree</div>
+                                        <div class="font-semibold">Projet créé</div>
                                         <div class="text-muted text-sm">${formatDate(project.createdAt)}</div>
                                     </div>
                                 </div>
@@ -1210,15 +1210,15 @@ function renderMarketplace() {
                             <input type="text" class="form-control" placeholder="Rechercher un artisan..." id="search-craftsmen" onkeyup="searchCraftsmen()">
                         </div>
                         <select class="form-control" style="width: auto;" id="filter-type" onchange="filterCraftsmenByType()">
-                            <option value="all">Tous les metiers</option>
+                            <option value="all">Tous les métiers</option>
                             <option value="plumber">Plombiers</option>
                             <option value="electrician">Electriciens</option>
-                            <option value="renovation">Renovation</option>
+                            <option value="renovation">Rénovation</option>
                             <option value="designer">Designers</option>
                             <option value="painter">Peintres</option>
                         </select>
                         <select class="form-control" style="width: auto;" id="filter-sort" onchange="sortCraftsmen()">
-                            <option value="rating">Mieux notes</option>
+                            <option value="rating">Mieux notés</option>
                             <option value="reviews">Plus d'avis</option>
                             <option value="price-low">Prix croissant</option>
                             <option value="price-high">Prix decroissant</option>
@@ -1249,7 +1249,7 @@ function renderCraftsmenCards(craftsmen) {
                     </div>
                 </div>
                 <div class="flex gap-1 mb-3 flex-wrap">
-                    ${c.verified ? '<span class="tag tag-success"><i class="fas fa-check-circle" aria-hidden="true"></i> Verifie</span>' : ''}
+                    ${c.verified ? '<span class="tag tag-success"><i class="fas fa-check-circle" aria-hidden="true"></i> Vérifié</span>' : ''}
                     ${c.pro ? '<span class="tag tag-primary"><i class="fas fa-award" aria-hidden="true"></i> Pro</span>' : ''}
                     ${c.fast ? '<span class="tag tag-warning"><i class="fas fa-bolt" aria-hidden="true"></i> Rapide</span>' : ''}
                 </div>
@@ -1364,7 +1364,7 @@ function renderCraftsmanDetail(craftsmanId) {
                                         <span class="text-muted">(${c.reviews} avis)</span>
                                     </div>
                                     <div class="flex gap-1 mt-2">
-                                        ${c.verified ? '<span class="tag tag-success"><i class="fas fa-check-circle" aria-hidden="true"></i> Verifie</span>' : ''}
+                                        ${c.verified ? '<span class="tag tag-success"><i class="fas fa-check-circle" aria-hidden="true"></i> Vérifié</span>' : ''}
                                         ${c.pro ? '<span class="tag tag-primary"><i class="fas fa-award" aria-hidden="true"></i> Pro</span>' : ''}
                                         ${c.fast ? '<span class="tag tag-warning"><i class="fas fa-bolt" aria-hidden="true"></i> Rapide</span>' : ''}
                                     </div>
