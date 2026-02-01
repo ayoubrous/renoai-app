@@ -703,7 +703,7 @@ function renderStep3SubDevis() {
                         const isSelected = DevisState.selectedSubDevis === sub.id;
                         const config = DevisData.aiAnnotationConfig[sub.annotationType] || {};
                         return `
-                            <div class="sub-devis-item ${isSelected ? 'selected' : ''}" onclick="selectSubDevis(${sub.id})"
+                            <div class="sub-devis-item ${isSelected ? 'selected' : ''}" onclick="selectSubDevis(${sub.id}, event)">
                                 <div class="flex gap-2" style="align-items: center; margin-bottom: 0.5rem;">
                                     <span class="sub-devis-number" style="background: ${config.color || 'var(--gray-400)'}">
                                         <i class="fas ${config.icon || 'fa-wrench'}" aria-hidden="true"></i>
@@ -757,19 +757,17 @@ function renderSubDevisPlaceholder() {
     `;
 }
 
-function selectSubDevis(id) {
+function selectSubDevis(id, evt) {
     DevisState.selectedSubDevis = id;
     const devis = DevisData.currentDevis;
     document.getElementById('sub-devis-detail').innerHTML = renderSubDevisDetail(devis.subDevis.find(s => s.id === id));
 
     // Update selection style
     document.querySelectorAll('.sub-devis-item').forEach(item => {
-        item.style.background = '';
-        item.style.borderLeft = '';
+        item.classList.remove('selected');
     });
-    if (event && event.currentTarget) {
-        event.currentTarget.style.background = 'var(--primary-50)';
-        event.currentTarget.style.borderLeft = '3px solid var(--primary)';
+    if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('selected');
     }
 }
 

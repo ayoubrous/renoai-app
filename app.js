@@ -253,6 +253,12 @@ const AppState = {
 // Utility Functions
 // ========================================
 
+function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+}
+
 function formatCurrency(amount) {
     return new Intl.NumberFormat('fr-LU', {
         style: 'currency',
@@ -1480,7 +1486,7 @@ function renderMessages() {
                         const lastMessage = conv.messages[conv.messages.length - 1];
                         return `
                             <div class="conversation-item ${AppState.activeConversation === conv.id ? 'active' : ''}"
-                                 onclick="selectConversation(${conv.id})">
+                                 onclick="selectConversation(${conv.id}, event)">
                                 <div class="flex gap-2 items-center">
                                     <div class="user-avatar user-avatar-sm">${craftsman.initials}</div>
                                     <div class="flex-1 min-w-0">
@@ -1492,7 +1498,7 @@ function renderMessages() {
                                             ${project.title}
                                         </div>
                                         <div class="conversation-last-msg">
-                                            ${lastMessage.text.substring(0, 40)}...
+                                            ${escapeHTML(lastMessage.text.substring(0, 40))}...
                                         </div>
                                     </div>
                                 </div>
@@ -1541,7 +1547,7 @@ function renderChatArea(conversationId) {
             ${conv.messages.map(msg => `
                 <div class="chat-bubble-wrap ${msg.sender === 'user' ? 'chat-bubble-wrap-sent' : 'chat-bubble-wrap-received'}">
                     <div class="chat-bubble ${msg.sender === 'user' ? 'chat-bubble-sent' : 'chat-bubble-received'}">
-                        <div class="chat-bubble-text">${msg.text}</div>
+                        <div class="chat-bubble-text">${escapeHTML(msg.text)}</div>
                         <div class="chat-bubble-time">${msg.time.split(' ')[1]}</div>
                     </div>
                 </div>
@@ -1561,11 +1567,14 @@ function renderChatArea(conversationId) {
 function initMessages() {
     if (AppData.messages.length > 0 && !AppState.activeConversation) {
         AppState.activeConversation = AppData.messages[0].id;
-        renderPage();
+        const chatArea = document.getElementById('chat-area');
+        if (chatArea) {
+            chatArea.innerHTML = renderChatArea(AppState.activeConversation);
+        }
     }
 }
 
-function selectConversation(id) {
+function selectConversation(id, evt) {
     AppState.activeConversation = id;
     document.getElementById('chat-area').innerHTML = renderChatArea(id);
 
@@ -1574,8 +1583,10 @@ function selectConversation(id) {
         item.classList.remove('active');
         item.style.background = '';
     });
-    event.currentTarget.classList.add('active');
-    event.currentTarget.style.background = 'var(--primary-50)';
+    if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
+        evt.currentTarget.style.background = 'var(--primary-50)';
+    }
 
     // Scroll to bottom
     const container = document.getElementById('messages-container');
@@ -1789,8 +1800,8 @@ function showNotification(title, message, type = 'info') {
         <div class="notification ${type}" role="alert">
             <i class="fas fa-${iconMap[type] || 'info-circle'} notification-icon ${type}" aria-hidden="true"></i>
             <div>
-                <div class="font-semibold">${title}</div>
-                <div class="text-muted notification-message">${message}</div>
+                <div class="font-semibold">${escapeHTML(title)}</div>
+                <div class="text-muted notification-message">${escapeHTML(message)}</div>
             </div>
             <button class="notification-close" onclick="this.parentElement.remove()" aria-label="Fermer la notification">
                 <i class="fas fa-times" aria-hidden="true"></i>
@@ -1800,15 +1811,20 @@ function showNotification(title, message, type = 'info') {
 
     document.body.insertAdjacentHTML('beforeend', notifHTML);
 
+    const notif = document.body.lastElementChild;
     setTimeout(() => {
-        const notif = document.querySelector('.notification');
-        if (notif) notif.remove();
+        if (notif && notif.parentElement) notif.remove();
     }, 5000);
 }
 
 // ========================================
 // Initialize App
 // ========================================
+
+function logout() {
+    showNotification('Déconnexion', 'Vous avez été déconnecté.', 'info');
+    navigateTo('dashboard');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     renderPage();

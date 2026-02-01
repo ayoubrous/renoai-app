@@ -2585,9 +2585,7 @@ select.form-control {
 .text-lg { font-size: var(--font-size-lg); }
 .text-xl { font-size: var(--font-size-xl); }
 .text-2xl { font-size: var(--font-size-2xl); }
-.text-success { color: var(--color-success); }
 .text-error { color: var(--color-error); }
-.text-right { text-align: right; }
 
 /* ========================================
    Utilities - Layout
